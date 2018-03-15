@@ -1,4 +1,5 @@
 syntax on               " enable syntax highlighting
+set modelines=5         " enable modeline parsing
 set nobackup            " don't create pointless backup files; Use VCS instead
 set autoread            " watch for file changes
 set showcmd             " show selection metadata

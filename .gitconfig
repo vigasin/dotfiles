@@ -1,0 +1,35 @@
+[user]
+	name = Ivan Vigasin
+	email = ivigasin@gmail.com
+[color]
+	ui = true
+[core]
+	editor = vim
+	filemode = false
+[merge]
+	tool = vimdiff
+[alias]
+	aa = !git add -u && git add . && git status
+	ap = add -p
+	cm = commit -m
+[push]
+	default = simple
+[apply]
+	whitespace = nowarn
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
