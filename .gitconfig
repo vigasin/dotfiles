@@ -13,6 +13,7 @@
 	aa = !git add -u && git add . && git status
 	ap = add -p
 	cm = commit -m
+    id = describe --abbrev=12 --always --dirty=+
 [push]
 	default = simple
 [apply]
