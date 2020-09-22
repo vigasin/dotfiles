@@ -6,6 +6,7 @@
 [core]
 	editor = vim
 	filemode = false
+	excludesfile = /Users/ivigasin/.gitignore_global
 [merge]
 	tool = vimdiff
 [alias]
@@ -33,3 +34,21 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[diff]
+    tool = araxis
+
+[merge]
+    tool = araxis
+
+[mergetool "araxis"]
+	path = /Applications/Araxis Merge.app/Contents/Utilities/compare
+
+[difftool "araxis"]
+	path = /Applications/Araxis Merge.app/Contents/Utilities/compare
