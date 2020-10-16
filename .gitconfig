@@ -15,6 +15,7 @@
 	ap = add -p
 	cm = commit -m
     id = describe --abbrev=12 --always --dirty=+
+    st = status
 [push]
 	default = simple
 [apply]
