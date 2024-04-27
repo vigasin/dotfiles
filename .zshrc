@@ -185,6 +185,10 @@ which gh >& /dev/null && eval "$(gh copilot alias -- zsh)"
 
 # ---- FZF -----
 
+if [ -d "$HOME/.fzf/bin" ]; then
+  PATH=$PATH:$HOME/.fzf/bin
+fi
+
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh | sd 'builtin cd --' 'cd')"
 
@@ -258,5 +262,3 @@ alias vi=nvim
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
