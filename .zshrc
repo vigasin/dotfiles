@@ -60,7 +60,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose aws zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker docker-compose aws zsh-autosuggestions zsh-syntax-highlighting pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -166,11 +166,6 @@ _fzf_comprun() {
   esac
 }
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
-if which pyenv >& /dev/null; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
 
 if [ -d "$HOME/ivigasin@gmail.com - Google Drive/My Drive/Scripts" ]; then
   PATH=$PATH:"$HOME/ivigasin@gmail.com - Google Drive/My Drive/Scripts"
