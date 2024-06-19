@@ -147,7 +147,7 @@ export PATH=$PATH:$HOME/sdk/flutter/bin
 # [[ "$HOST" =~ "bmac*" ]] && dm vigub
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/sdk/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/path.zsh.inc"; fi
+# if [ -f "$HOME/sdk/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/path.zsh.inc"; fi
 
 function gam() { "$HOME/bin/gam/gam" "$@" ; }
 [ -f ~/.secrets.sh ] && source ~/.secrets.sh
