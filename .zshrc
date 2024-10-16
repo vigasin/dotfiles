@@ -131,11 +131,11 @@ alias lbe='ledger bal -X $ ^Envelopes'
 alias lbd='ledger bal -X $ ^Debts'
 alias lba='ledger bal -X $ ^Assets ^Liabilities'
 
-virtualenvwrapper_lazy="$(which virtualenvwrapper_lazy.sh 2> /dev/null)"
-if [ -f "$virtualenvwrapper_lazy" ]; then
-  source "$virtualenvwrapper_lazy"
-  workon default
-fi
+#virtualenvwrapper_lazy="$(which virtualenvwrapper_lazy.sh 2> /dev/null)"
+#if [ -f "$virtualenvwrapper_lazy" ]; then
+#  source "$virtualenvwrapper_lazy"
+#  workon default
+#fi
 
 # eval "$(rbenv init -)"
 unsetopt share_history
@@ -147,10 +147,7 @@ export PATH=$PATH:$HOME/sdk/flutter/bin
 # [[ "$HOST" =~ "bmac*" ]] && dm vigub
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/sdk/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/sdk/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/completion.zsh.inc"; fi
+# if [ -f "$HOME/sdk/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/path.zsh.inc"; fi
 
 function gam() { "$HOME/bin/gam/gam" "$@" ; }
 [ -f ~/.secrets.sh ] && source ~/.secrets.sh
