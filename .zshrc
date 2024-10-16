@@ -255,6 +255,8 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias vi=nvim
 
+alias incrc='cat run_config.yaml | yq ".module_versions.app |= (split(\".\") | .[2] = ((.[2] | tonumber) + 1 | tostring) | join(\".\"))" | yq -y > tmp.yaml; mv tmp.yaml run_config.yaml; cat run_config.yaml'
+
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
