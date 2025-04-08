@@ -244,7 +244,8 @@ alias ls="eza --color=always --git"
 
 # thefuck alias
 #eval $(thefuck --alias)
-eval $(thefuck --alias blya)
+
+which thefuck &> /dev/null && eval $(thefuck --alias blya)
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
