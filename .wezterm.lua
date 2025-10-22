@@ -37,6 +37,7 @@ config.keys = {
 	-- Move (reorder) the current tab left/right
 	{ key = "{", mods = "CMD|OPT", action = act.MoveTabRelative(-1) },
 	{ key = "}", mods = "CMD|OPT", action = act.MoveTabRelative(1) },
+	{ key = "Enter", mods = "SHIFT", action = wezterm.action({ SendString = "\x1b\r" }) },
 }
 
 -- and finally, return the configuration to wezterm
