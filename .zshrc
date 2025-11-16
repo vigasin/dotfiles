@@ -299,4 +299,8 @@ unset __conda_setup
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]
+then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 alias gam="/Users/ivigasin/bin/gam7/gam"
