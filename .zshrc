@@ -1,3 +1,5 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,6 +19,8 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,11 +64,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose aws zsh-autosuggestions zsh-syntax-highlighting pyenv)
+plugins=(git podman aws zsh-autosuggestions zsh-syntax-highlighting pyenv)
+# plugins=(git podman aws zsh-syntax-highlighting pyenv)
 
 source $ZSH/oh-my-zsh.sh
-
-unalias gam
 
 # User configuration
 
@@ -99,6 +102,10 @@ export EDITOR='nvim'
 
 bindkey \^U backward-kill-line
 
+# completion using arrow keys (based on history)
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
 #autoload -Uz vcs_info
 #zstyle ':vcs_info:*' enable git 
 #zstyle ':vcs_info:(git*):*' use-simple true
@@ -113,29 +120,19 @@ export PATH=$HOME/bin:$GOPATH/bin:$PATH
 export AWS_REGION=us-east-1
 export AWS_PAGER=""
 
-export CAMDIGGER_CONF_DIR=$HOME/workspace/camdigger/etc/dev
-export ANALYTICS_CONF_DIR=$HOME/workspace/analytics/etc/dev
-
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_pass.txt
 export LEDGER_FILE=$HOME/Library/CloudStorage/GoogleDrive-ivigasin@gmail.com/My\ Drive/AppData/finances.ledger
+export DOCKER_HOST=unix:///var/run/docker.sock
 
 export PGHOST=localhost
 export PGUSER=postgres
 export PGPORT=5432
 
-alias so='source env/bin/activate'
-alias e='emacsclient -t'
-alias dsh='docker-machine ssh'
+alias so='source .venv/bin/activate'
 
 alias lbe='ledger bal -X $ ^Envelopes'
 alias lbd='ledger bal -X $ ^Debts'
 alias lba='ledger bal -X $ ^Assets ^Liabilities'
-
-#virtualenvwrapper_lazy="$(which virtualenvwrapper_lazy.sh 2> /dev/null)"
-#if [ -f "$virtualenvwrapper_lazy" ]; then
-#  source "$virtualenvwrapper_lazy"
-#  workon default
-#fi
 
 # eval "$(rbenv init -)"
 unsetopt share_history
@@ -149,7 +146,9 @@ export PATH=$PATH:$HOME/sdk/flutter/bin
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f "$HOME/sdk/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/sdk/google-cloud-sdk/path.zsh.inc"; fi
 
-function gam() { "$HOME/bin/gam/gam" "$@" ; }
+
+alias gam="$HOME/bin/gam7/gam"
+
 [ -f ~/.secrets.sh ] && source ~/.secrets.sh
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
@@ -253,9 +252,42 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 alias vi=nvim
 
-alias incrc='cat run_config.yaml | yq ".module_versions.app |= (split(\".\") | .[2] = ((.[2] | tonumber) + 1 | tostring) | join(\".\"))" | yq -y > tmp.yaml; mv tmp.yaml run_config.yaml; cat run_config.yaml'
+# Channel Partners
+#
+export CLOUD_PORTAL_CONF_DIR=$HOME/workspace/cloud_portal/etc
+export LOCAL_ENV=true
+source ~/workspace/cloud_portal/common/python/.bash_common
+
+function incrc()
+{
+  [ -f run_config.yaml ] || { echo "No run_config.yaml"; exit 0; } 
+
+  cat run_config.yaml | yq ".module_versions.app |= (split(\".\") | .[2] = ((.[2] | tonumber) + 1 | tostring) | join(\".\"))" | yq -y > tmp.yaml
+  mv tmp.yaml run_config.yaml
+  cat run_config.yaml
+}
 
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+alias gam="/Users/ivigasin/bin/gam7/gam"
