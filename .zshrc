@@ -117,6 +117,11 @@ bindkey '^[[B' history-search-forward
 export GOPATH=$HOME/workspace/go
 export PATH=$HOME/bin:$GOPATH/bin:$PATH
 
+# Add ~/.local/bin to PATH if it exists and is not already in PATH
+if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 export AWS_REGION=us-east-1
 export AWS_PAGER=""
 
