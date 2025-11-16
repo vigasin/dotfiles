@@ -256,7 +256,11 @@ alias vi=nvim
 #
 export CLOUD_PORTAL_CONF_DIR=$HOME/workspace/cloud_portal/etc
 export LOCAL_ENV=true
-source ~/workspace/cloud_portal/common/python/.bash_common
+
+if [ -f ~/workspace/cloud_portal/common/python/.bash_common ]
+then
+  source ~/workspace/cloud_portal/common/python/.bash_common
+fi
 
 function incrc()
 {
