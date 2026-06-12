@@ -115,7 +115,7 @@ bindkey '^[[B' history-search-forward
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv docker_machine)
 
 export GOPATH=$HOME/workspace/go
-export PATH=$HOME/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:$PATH
 
 # Add ~/.local/bin to PATH if it exists and is not already in PATH
 if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
