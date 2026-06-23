@@ -139,6 +139,8 @@ alias lbe='ledger bal -X $ ^Envelopes'
 alias lbd='ledger bal -X $ ^Debts'
 alias lba='ledger bal -X $ ^Assets ^Liabilities'
 
+alias passw='PASSWORD_STORE_DIR=~/.password-store-work pass'
+
 # eval "$(rbenv init -)"
 unsetopt share_history
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
