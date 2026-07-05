@@ -1,0 +1,22 @@
+# Herdr — agent multiplexer (https://herdr.dev)
+# Full reference: https://herdr.dev/docs/configuration/
+# See every default with `herdr --default-config`.
+# Apply changes without restarting: `herdr server reload-config`.
+
+onboarding = false
+
+[theme]
+# Dark, cyan/blue theme to match the WezTerm/Kitty palette.
+name = "tokyo-night"
+auto_switch = false
+
+[ui]
+accent = "cyan"
+confirm_close = true
+
+[keys]
+# Backtick prefix to match tmux muscle memory (see ~/.tmux.conf).
+prefix = "`"
+# Splits mirror tmux: `|` side-by-side, `-` stacked.
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
