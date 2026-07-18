@@ -7,6 +7,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export JDK_JAVA_OPTIONS="-Djava.awt.headless=true"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -126,8 +128,10 @@ export AWS_REGION=us-east-1
 export AWS_PAGER=""
 
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_pass.txt
-export LEDGER_FILE=$HOME/Library/CloudStorage/GoogleDrive-ivigasin@gmail.com/My\ Drive/AppData/finances.ledger
-export DOCKER_HOST=unix:///var/run/docker.sock
+export LEDGER_FILE=$HOME/Documents/Vault/finance/finances.ledger
+
+export RESTIC_REPOSITORY="rclone:yandex:restic-repo"
+export RESTIC_PASSWORD_COMMAND="pass show config/restic/password"
 
 export PGHOST=localhost
 export PGUSER=postgres
@@ -138,11 +142,12 @@ alias so='source .venv/bin/activate'
 alias lbe='ledger bal -X $ ^Envelopes'
 alias lbd='ledger bal -X $ ^Debts'
 alias lba='ledger bal -X $ ^Assets ^Liabilities'
+alias passw='PASSWORD_STORE_DIR=~/.password-store-work pass'
 
 # eval "$(rbenv init -)"
 unsetopt share_history
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-export PATH=$PATH:$HOME/sdk/flutter/bin
+export PATH=$PATH:$HOME/sdk/flutter/bin:$HOME/.pub-cache/bin
 
 # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
@@ -301,6 +306,11 @@ then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 alias gam="/Users/ivigasin/bin/gam7/gam"
+
+alias kssh='kitten ssh'
+alias icat='kitten icat'
+alias kclip='kitten clipboard'
+alias kdiff='kitten diff'
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

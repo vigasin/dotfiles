@@ -12,5 +12,7 @@ if which pyenv >& /dev/null; then
   eval "$(pyenv virtualenv-init -)"  
 fi
 
+export TG_LOG_CUSTOM_FORMAT="%time %msg"
+
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zprofile.post.zsh"
