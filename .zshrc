@@ -117,7 +117,7 @@ bindkey '^[[B' history-search-forward
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs virtualenv docker_machine)
 
 export GOPATH=$HOME/workspace/go
-export PATH=$HOME/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:$PATH
 
 # Add ~/.local/bin to PATH if it exists and is not already in PATH
 if [ -d "$HOME/.local/bin" ] && [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
@@ -142,6 +142,8 @@ alias so='source .venv/bin/activate'
 alias lbe='ledger bal -X $ ^Envelopes'
 alias lbd='ledger bal -X $ ^Debts'
 alias lba='ledger bal -X $ ^Assets ^Liabilities'
+alias passw='PASSWORD_STORE_DIR=~/.password-store-work pass'
+
 alias passw='PASSWORD_STORE_DIR=~/.password-store-work pass'
 
 # eval "$(rbenv init -)"
